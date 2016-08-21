@@ -7,15 +7,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "taxonomy_types")
+public class TaxonomyType {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @NotNull
-    private String username;
+    private String title;
 
     public Long getId() {
         return id;
@@ -25,11 +25,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

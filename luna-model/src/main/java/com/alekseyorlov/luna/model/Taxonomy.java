@@ -6,12 +6,6 @@ import javax.persistence.*;
 @Table(name = "taxonomies")
 public class Taxonomy {
 
-    public enum Type {
-        TAG
-    }
-
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue
     private Long id;
@@ -19,7 +13,8 @@ public class Taxonomy {
     @ManyToOne(optional = false)
     private Entry entry;
 
-    private Type type;
+    @ManyToOne(optional = false)
+    private TaxonomyType type;
 
     private String name;
 
@@ -39,11 +34,11 @@ public class Taxonomy {
         this.entry = entry;
     }
 
-    public Type getType() {
+    public TaxonomyType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(TaxonomyType type) {
         this.type = type;
     }
 

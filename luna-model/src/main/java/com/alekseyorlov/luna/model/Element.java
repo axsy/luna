@@ -10,28 +10,21 @@ import static javax.persistence.FetchType.EAGER;
 @Table(name = "elements")
 public class Element {
 
-    private static final long serialVersionUID = 1L;
-
-    public enum Type {
-        TEXT,
-        MARKDOWN,
-    }
-
     @Id
     @GeneratedValue
     private Long id;
 
-    @NotNull
-    private Type type;
+    @ManyToOne(optional = false)
+    private ElementType type;
+
+    @ManyToOne(optional = false)
+    private Entry entry;
 
     @ElementCollection(fetch = EAGER)
     @MapKeyColumn(name = "name")
     @Column(name = "value")
     @CollectionTable(name = "elements_data")
     private Map<String, String> data;
-
-    @ManyToOne(optional = false)
-    private Entry entry;
 
     public Long getId() {
         return id;
@@ -41,11 +34,11 @@ public class Element {
         this.id = id;
     }
 
-    public Type getType() {
+    public ElementType getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(ElementType type) {
         this.type = type;
     }
 

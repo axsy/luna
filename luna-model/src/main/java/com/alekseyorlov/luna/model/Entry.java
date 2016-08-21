@@ -11,8 +11,6 @@ import java.util.List;
 @Table(name = "entries")
 public class Entry {
 
-    private static final long serialVersionUID = 1L;
-
     public enum Status {
         PUBLISHED,
         NOT_PUBLISHED,
@@ -35,6 +33,9 @@ public class Entry {
 
     @NotNull
     private String slug;
+
+    @ManyToOne(optional = false)
+    private EntryType type;
 
     @OneToMany(mappedBy = "entry", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn(name = "order_id")
@@ -91,6 +92,14 @@ public class Entry {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public EntryType getType() {
+        return type;
+    }
+
+    public void setType(EntryType type) {
+        this.type = type;
     }
 
     public List<Element> getElements() {
