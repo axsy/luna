@@ -17,6 +17,11 @@ public class EntryType {
 
     @NotNull
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "entry_types_element_types",
+        joinColumns = @JoinColumn(name = "element_type_id", referencedColumnName = "id"),
+        inverseJoinColumns= @JoinColumn(name = "entry_type_id", referencedColumnName = "id")
+    )
     private List<ElementType> elementTypes;
 
     public Long getId() {

@@ -15,6 +15,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.datasource.url>jdbc:h2:mem:luna</spring.datasource.url>
+        <spring.datasource.driver-class-name>org.h2.Driver</spring.datasource.driver-class-name>
+        <spring.datasource.username>sa</spring.datasource.username>
+        <spring.datasource.password></spring.datasource.password>
     </properties>
 
     <dependencies>
@@ -50,12 +55,34 @@
         </dependency>
     </dependencies>
 
-    <!-- Package as an executable jar -->
     <build>
         <plugins>
+            <!-- Package as an executable jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Database schema management -->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <changeLogFile>src/main/resources/liquibase/db.changelog.xml</changeLogFile>
+                    <driver>${spring.datasource.driver-class-name}</driver>
+                    <url>${spring.datasource.url}</url>
+                    <username>${spring.datasource.username}</username>
+                    <password>${spring.datasource.password}</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
