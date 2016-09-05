@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Table(name = "entries")
+@Table(name = "`entries`")
 public class Entry {
 
     public enum Status {

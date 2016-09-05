@@ -2,8 +2,9 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="aleksey" id="1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+                   objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="1">
         <createTable tableName="luna_element_types">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -13,7 +14,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="2">
         <createTable tableName="luna_elements">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -27,7 +28,7 @@
             <column name="order_id" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="3">
         <createTable tableName="luna_elements_allowed_data">
             <column name="element_type_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -38,7 +39,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="4">
         <createTable tableName="luna_elements_data">
             <column name="element_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -49,7 +50,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="5">
         <createTable tableName="luna_entries">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -77,7 +78,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="6">
         <createTable tableName="luna_entry_types">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -87,7 +88,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="7">
         <createTable tableName="luna_entry_types_element_types">
             <column name="entry_type_id" type="BIGINT">
                 <constraints nullable="false"/>
@@ -97,7 +98,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="8">
         <createTable tableName="luna_taxonomies">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -112,7 +113,7 @@
             <column name="order_id" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="9">
         <createTable tableName="luna_taxonomy_types">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -122,7 +123,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="10">
         <createTable tableName="luna_users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
@@ -132,109 +133,109 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="aleksey" id="11" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="11">
         <addPrimaryKey columnNames="element_type_id, name" constraintName="PRIMARY_KEY_ELEMENTS_ALLOWED_DATA"
                        tableName="luna_elements_allowed_data"/>
     </changeSet>
-    <changeSet author="aleksey" id="12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="12">
         <addPrimaryKey columnNames="element_id, name" constraintName="PRIMARY_KEY_ELEMENTS_DATA"
                        tableName="luna_elements_data"/>
     </changeSet>
-    <changeSet author="aleksey" id="13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="13">
         <createIndex indexName="FK65ii0nqynqp1c7vqj0xn9paop" tableName="luna_entry_types_element_types">
             <column name="element_type_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="14">
         <createIndex indexName="FK76kkr3fyw27y8qdhmj4jnahji" tableName="luna_entry_types_element_types">
             <column name="entry_type_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="15">
         <createIndex indexName="FKa9uw6n79rv9283a7id19e64tk" tableName="luna_entries">
             <column name="type_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="16" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="16">
         <createIndex indexName="FKb6w7n7r7ql2bfl9fwkkl2ggh8" tableName="luna_entries">
             <column name="owner_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="17" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="17">
         <createIndex indexName="FKk5chp0ape58v06pvnnbgxgc4k" tableName="luna_elements">
             <column name="type_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="18" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="18">
         <createIndex indexName="FKma6vbg2ecvgbjlc7dc008s2rl" tableName="luna_taxonomies">
             <column name="entry_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="19" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="19">
         <createIndex indexName="FKoq636h3rvlrug0n1s9phkycow" tableName="luna_taxonomies">
             <column name="type_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="20" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="20">
         <createIndex indexName="FKr0b0ke07bv2tj8rr632ry0ydr" tableName="luna_elements">
             <column name="entry_id"/>
         </createIndex>
     </changeSet>
-    <changeSet author="aleksey" id="21" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="21">
         <addForeignKeyConstraint baseColumnNames="element_type_id" baseTableName="luna_entry_types_element_types"
                                  constraintName="FK65ii0nqynqp1c7vqj0xn9paop" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_element_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="22" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="22">
         <addForeignKeyConstraint baseColumnNames="entry_type_id" baseTableName="luna_entry_types_element_types"
                                  constraintName="FK76kkr3fyw27y8qdhmj4jnahji" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_entry_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="23" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="23">
         <addForeignKeyConstraint baseColumnNames="element_id" baseTableName="luna_elements_data"
                                  constraintName="FK9elco34prvc1i16v2w0dcsq0w" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_elements"/>
     </changeSet>
-    <changeSet author="aleksey" id="24" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="24">
         <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="luna_entries"
                                  constraintName="FKa9uw6n79rv9283a7id19e64tk" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_entry_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="25" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="25">
         <addForeignKeyConstraint baseColumnNames="owner_id" baseTableName="luna_entries"
                                  constraintName="FKb6w7n7r7ql2bfl9fwkkl2ggh8" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_users"/>
     </changeSet>
-    <changeSet author="aleksey" id="26" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="26">
         <addForeignKeyConstraint baseColumnNames="element_type_id" baseTableName="luna_elements_allowed_data"
                                  constraintName="FKcv5et33d0a4f3ws8auk9hwchi" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_element_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="27" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="27">
         <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="luna_elements"
                                  constraintName="FKk5chp0ape58v06pvnnbgxgc4k" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_element_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="28" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="28">
         <addForeignKeyConstraint baseColumnNames="entry_id" baseTableName="luna_taxonomies"
                                  constraintName="FKma6vbg2ecvgbjlc7dc008s2rl" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_entries"/>
     </changeSet>
-    <changeSet author="aleksey" id="29" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="29">
         <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="luna_taxonomies"
                                  constraintName="FKoq636h3rvlrug0n1s9phkycow" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
                                  referencedColumnNames="id" referencedTableName="luna_taxonomy_types"/>
     </changeSet>
-    <changeSet author="aleksey" id="30" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="aleksey" id="30">
         <addForeignKeyConstraint baseColumnNames="entry_id" baseTableName="luna_elements"
                                  constraintName="FKr0b0ke07bv2tj8rr632ry0ydr" deferrable="false"
                                  initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"

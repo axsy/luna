@@ -9,9 +9,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 @Configuration
-@EnableAutoConfiguration
 @ComponentScan
-@PropertySource("classpath:/orm-configuration.properties")
+@EnableAutoConfiguration
+@PropertySource(value = {"classpath:/orm-configuration.properties"})
 @EntityScan(
         basePackageClasses = { Application.class, Jsr310JpaConverters.class }
 )

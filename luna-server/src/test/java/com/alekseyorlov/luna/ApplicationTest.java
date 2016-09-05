@@ -3,14 +3,14 @@ package com.alekseyorlov.luna;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.assertj.core.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {Application.class})
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = {Application.class})
 public class ApplicationTest {
 
     @Autowired
@@ -18,7 +18,7 @@ public class ApplicationTest {
 
     @Test
     public void shouldInstantiateApplicationContext() {
-
         assertThat(context).isNotNull();
     }
+
 }

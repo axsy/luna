@@ -16,10 +16,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <spring.datasource.url>jdbc:h2:mem:luna</spring.datasource.url>
-        <spring.datasource.driver-class-name>org.h2.Driver</spring.datasource.driver-class-name>
-        <spring.datasource.username>sa</spring.datasource.username>
-        <spring.datasource.password></spring.datasource.password>
+        <liquibase.url>jdbc:h2:~/test</liquibase.url>
+        <liquibase.driver-class-name>org.h2.Driver</liquibase.driver-class-name>
+        <liquibase.username>sa</liquibase.username>
+        <liquibase.password></liquibase.password>
     </properties>
 
     <dependencies>
@@ -46,6 +46,10 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
         <!-- Testing -->
         <dependency>
@@ -67,13 +71,13 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.5.1</version>
+                <version>${liquibase.version}</version>
                 <configuration>
                     <changeLogFile>src/main/resources/liquibase/db.changelog.xml</changeLogFile>
-                    <driver>${spring.datasource.driver-class-name}</driver>
-                    <url>${spring.datasource.url}</url>
-                    <username>${spring.datasource.username}</username>
-                    <password>${spring.datasource.password}</password>
+                    <driver>${liquibase.driver-class-name}</driver>
+                    <url>${liquibase.url}</url>
+                    <username>${liquibase.username}</username>
+                    <password>${liquibase.password}</password>
                 </configuration>
                 <executions>
                     <execution>

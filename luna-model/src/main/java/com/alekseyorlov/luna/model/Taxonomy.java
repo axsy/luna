@@ -3,7 +3,7 @@ package com.alekseyorlov.luna.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "taxonomies")
+@Table(name = "`taxonomies`")
 public class Taxonomy {
 
     @Id

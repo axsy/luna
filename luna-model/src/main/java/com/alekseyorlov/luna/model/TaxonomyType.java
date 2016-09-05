@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "taxonomy_types")
+@Table(name = "`taxonomy_types`")
 public class TaxonomyType {
 
     @Id

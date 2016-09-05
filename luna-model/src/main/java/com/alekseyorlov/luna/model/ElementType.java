@@ -7,7 +7,7 @@ import java.util.Map;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
-@Table(name = "element_types")
+@Table(name = "`element_types`")
 public class ElementType {
 
     @Id

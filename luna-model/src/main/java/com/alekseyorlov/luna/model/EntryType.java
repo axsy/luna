@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "entry_types")
+@Table(name = "`entry_types`")
 public class EntryType {
 
     @Id
