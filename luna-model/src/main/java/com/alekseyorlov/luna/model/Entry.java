@@ -1,5 +1,8 @@
 package com.alekseyorlov.luna.model;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotNull;
@@ -37,19 +40,26 @@ public class Entry {
     @ManyToOne(optional = false)
     private EntryType type;
 
-    @OneToMany(mappedBy = "entry", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "entry", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderColumn(name = "order_id")
     private List<Element> elements;
 
-    @OneToMany(mappedBy = "entry", cascade = CascadeType.ALL, orphanRemoval = true)
-    @OrderColumn(name = "order_id")
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "entries_taxonomies",
+            joinColumns = @JoinColumn(name = "entry_id", referencedColumnName = "id"),
+            inverseJoinColumns= @JoinColumn(name = "taxonomy_id", referencedColumnName = "id")
+    )
     private List<Taxonomy> taxonomies;
 
     @NotNull
+    @CreatedDate
     private Instant createdAt;
 
+    @LastModifiedDate
     private Instant updatedAt;
 
+    // TODO: Make it set automatically?
     private Instant publishedAt;
 
     private Instant depublishedAt;

@@ -1,2 +1,2 @@
 element_type_id,name,type
-1,text,java.lang.String
+markdown,markup,java.lang.String

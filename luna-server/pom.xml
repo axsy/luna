@@ -15,14 +15,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <liquibase.url>jdbc:h2:~/test</liquibase.url>
-        <liquibase.driver-class-name>org.h2.Driver</liquibase.driver-class-name>
-        <liquibase.username>sa</liquibase.username>
-        <liquibase.password></liquibase.password>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.alekseyorlov.luna</groupId>
+            <artifactId>luna-dto</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.alekseyorlov.luna</groupId>
             <artifactId>luna-model</artifactId>
@@ -51,6 +51,18 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
+        <!-- Mapper -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+        </dependency>
+
+        <!-- Utils -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -61,6 +73,7 @@
 
     <build>
         <plugins>
+
             <!-- Package as an executable jar -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -74,19 +87,8 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <changeLogFile>src/main/resources/liquibase/db.changelog.xml</changeLogFile>
-                    <driver>${liquibase.driver-class-name}</driver>
-                    <url>${liquibase.url}</url>
-                    <username>${liquibase.username}</username>
-                    <password>${liquibase.password}</password>
+                    <contexts>default</contexts>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

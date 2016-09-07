@@ -1,21 +1,26 @@
 package com.alekseyorlov.luna.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
-@Table(name = "`taxonomies`")
+@Table(name = "`taxonomies`", indexes = {
+        @Index(columnList = "name", name = "idx_taxonomies_name")
+})
 public class Taxonomy {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(optional = false)
-    private Entry entry;
+    @ManyToMany(mappedBy = "taxonomies")
+    private List<Entry> entries;
 
     @ManyToOne(optional = false)
     private TaxonomyType type;
 
+    @NotNull
     private String name;
 
     public Long getId() {
@@ -26,12 +31,12 @@ public class Taxonomy {
         this.id = id;
     }
 
-    public Entry getEntry() {
-        return entry;
+    public List<Entry> getEntries() {
+        return entries;
     }
 
-    public void setEntry(Entry entry) {
-        this.entry = entry;
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
     }
 
     public TaxonomyType getType() {

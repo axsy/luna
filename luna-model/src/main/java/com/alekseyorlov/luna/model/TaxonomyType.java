@@ -11,17 +11,16 @@ import javax.validation.constraints.NotNull;
 public class TaxonomyType {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     @NotNull
     private String title;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -11,8 +11,7 @@ import static javax.persistence.FetchType.EAGER;
 public class ElementType {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     @NotNull
     private String title;
@@ -23,11 +22,11 @@ public class ElementType {
     @CollectionTable(name = "elements_allowed_data")
     private Map<String, Class> allowedData;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

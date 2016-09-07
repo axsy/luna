@@ -24,6 +24,7 @@ public class Element {
     @MapKeyColumn(name = "name")
     @Column(name = "value")
     @CollectionTable(name = "elements_data")
+    @Lob
     private Map<String, String> data;
 
     public Long getId() {

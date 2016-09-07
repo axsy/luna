@@ -9,8 +9,7 @@ import java.util.List;
 public class EntryType {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
 
     @NotNull
     private String title;
@@ -24,11 +23,11 @@ public class EntryType {
     )
     private List<ElementType> elementTypes;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
