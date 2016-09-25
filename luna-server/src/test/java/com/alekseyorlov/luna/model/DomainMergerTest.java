@@ -1,7 +1,8 @@
 package com.alekseyorlov.luna.model;
 
 import com.alekseyorlov.luna.Application;
-import com.alekseyorlov.luna.model.DomainMerger.MergeStartegy;
+import com.alekseyorlov.luna.service.DomainMerger;
+import com.alekseyorlov.luna.service.DomainMerger.MergeStartegy;
 import com.alekseyorlov.luna.model.repository.EntryRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

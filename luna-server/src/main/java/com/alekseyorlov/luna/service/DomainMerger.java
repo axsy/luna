@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.service;
 
 import java.util.Collection;
 import org.springframework.beans.BeanWrapper;

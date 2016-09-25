@@ -18,4 +18,5 @@ public class OrmConfiguration {
     public Repositories repositories() {
         return new Repositories(listableBeanFactory);
     }
+
 }
