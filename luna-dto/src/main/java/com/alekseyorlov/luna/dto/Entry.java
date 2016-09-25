@@ -26,7 +26,7 @@ public class Entry {
 
     private Instant publishedAt;
 
-    private Instant depublishedAt;
+    private Instant unpublishedAt;
 
     public Long getId() {
         return id;
@@ -108,11 +108,11 @@ public class Entry {
         this.publishedAt = publishedAt;
     }
 
-    public Instant getDepublishedAt() {
-        return depublishedAt;
+    public Instant getUnpublishedAt() {
+        return unpublishedAt;
     }
 
-    public void setDepublishedAt(Instant depublishedAt) {
-        this.depublishedAt = depublishedAt;
+    public void setUnpublishedAt(Instant unpublishedAt) {
+        this.unpublishedAt = unpublishedAt;
     }
 }

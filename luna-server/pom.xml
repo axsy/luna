@@ -56,6 +56,10 @@
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.zalando.zjsonpatch</groupId>
+            <artifactId>zjsonpatch</artifactId>
+        </dependency>
 
         <!-- Utils -->
         <dependency>

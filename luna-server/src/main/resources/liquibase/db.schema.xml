@@ -58,7 +58,7 @@
             <column name="created_at" type="datetime(6)">
                 <constraints nullable="false"/>
             </column>
-            <column name="depublished_at" type="datetime(6)"/>
+            <column name="unpublished_at" type="datetime(6)"/>
             <column name="published_at" type="datetime(6)"/>
             <column name="slug" type="VARCHAR(255)">
                 <constraints nullable="false"/>

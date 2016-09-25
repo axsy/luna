@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Application.class})
-@ActiveProfiles("test")
+@ActiveProfiles({"test", "integration"})
 public class ApplicationTest {
 
     @Autowired

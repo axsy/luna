@@ -40,12 +40,13 @@ public class OrikaConfigurer extends NullMapperConfigurer {
         registerCustomConverters(factory);
 
         factory.classMap(Entry.class, com.alekseyorlov.luna.dto.Entry.class)
+                .fieldAToB("id", "id")
                 .field("title", "title")
                 .field("slug", "slug")
                 .field("createdAt", "createdAt")
                 .field("updatedAt", "updatedAt")
                 .field("publishedAt", "publishedAt")
-                .field("depublishedAt", "depublishedAt")
+                .field("unpublishedAt", "unpublishedAt")
                 .fieldMap("type", "type")
                     .converter(ENTRY_TYPE_CONVERTER_ID)
                     .add()

@@ -24,6 +24,7 @@
 
         <liquibase.version>3.5.1</liquibase.version>
         <orika.version>1.4.6</orika.version>
+        <zjsonpatch.version>0.3.0</zjsonpatch.version>
         <guava.version>19.0</guava.version>
     </properties>
 
@@ -47,6 +48,11 @@
                 <groupId>ma.glasnost.orika</groupId>
                 <artifactId>orika-core</artifactId>
                 <version>${orika.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.zalando.zjsonpatch</groupId>
+                <artifactId>zjsonpatch</artifactId>
+                <version>${zjsonpatch.version}</version>
             </dependency>
 
             <!-- Utils -->
