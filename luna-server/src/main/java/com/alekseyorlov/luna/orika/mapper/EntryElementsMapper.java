@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.service.orika.mapper;
+package com.alekseyorlov.luna.orika.mapper;
 
 import com.alekseyorlov.luna.model.Element;
 import com.alekseyorlov.luna.model.Entry;

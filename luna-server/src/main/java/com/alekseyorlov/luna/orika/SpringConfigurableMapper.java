@@ -1,6 +1,6 @@
-package com.alekseyorlov.luna.service.orika;
+package com.alekseyorlov.luna.orika;
 
-import com.alekseyorlov.luna.service.orika.configurer.MapperConfigurer;
+import com.alekseyorlov.luna.orika.configurer.MapperConfigurer;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import org.springframework.beans.BeansException;

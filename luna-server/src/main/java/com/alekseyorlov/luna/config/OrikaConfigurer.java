@@ -1,11 +1,11 @@
 package com.alekseyorlov.luna.config;
 
 import com.alekseyorlov.luna.model.Entry;
-import com.alekseyorlov.luna.service.orika.configurer.NullMapperConfigurer;
-import com.alekseyorlov.luna.service.orika.converter.EntryTypeConverter;
-import com.alekseyorlov.luna.service.orika.converter.EntryStatusConverter;
-import com.alekseyorlov.luna.service.orika.converter.EntryTaxonomiesConverter;
-import com.alekseyorlov.luna.service.orika.mapper.EntryElementsMapper;
+import com.alekseyorlov.luna.orika.configurer.NullMapperConfigurer;
+import com.alekseyorlov.luna.orika.converter.EntryTypeConverter;
+import com.alekseyorlov.luna.orika.converter.EntryStatusConverter;
+import com.alekseyorlov.luna.orika.converter.EntryTaxonomiesConverter;
+import com.alekseyorlov.luna.orika.mapper.EntryElementsMapper;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.converter.ConverterFactory;
 import ma.glasnost.orika.converter.builtin.PassThroughConverter;

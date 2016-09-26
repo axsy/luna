@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.service.orika.converter;
+package com.alekseyorlov.luna.orika.converter;
 
 import com.alekseyorlov.luna.model.EntryType;
 import com.alekseyorlov.luna.model.repository.EntryTypeRepository;

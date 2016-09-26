@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.service.orika;
+package com.alekseyorlov.luna.orika;
 
 import com.alekseyorlov.luna.Application;
 import com.alekseyorlov.luna.model.*;

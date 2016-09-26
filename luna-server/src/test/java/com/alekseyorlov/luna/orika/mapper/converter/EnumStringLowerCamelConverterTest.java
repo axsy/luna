@@ -1,7 +1,7 @@
-package com.alekseyorlov.luna.service.orika.mapper.converter;
+package com.alekseyorlov.luna.orika.mapper.converter;
 
 import com.alekseyorlov.luna.model.Entry;
-import com.alekseyorlov.luna.service.orika.converter.EntryStatusConverter;
+import com.alekseyorlov.luna.orika.converter.EntryStatusConverter;
 import ma.glasnost.orika.metadata.TypeFactory;
 import org.junit.Test;
 
