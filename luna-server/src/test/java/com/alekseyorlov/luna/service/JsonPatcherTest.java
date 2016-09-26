@@ -1,6 +1,7 @@
 package com.alekseyorlov.luna.service;
 
 import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.util.JsonPatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

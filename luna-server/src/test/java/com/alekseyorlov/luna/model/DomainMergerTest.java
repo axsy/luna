@@ -1,8 +1,8 @@
 package com.alekseyorlov.luna.model;
 
 import com.alekseyorlov.luna.Application;
-import com.alekseyorlov.luna.service.DomainMerger;
-import com.alekseyorlov.luna.service.DomainMerger.MergeStartegy;
+import com.alekseyorlov.luna.util.ObjectMerger;
+import com.alekseyorlov.luna.util.ObjectMerger.MergeStartegy;
 import com.alekseyorlov.luna.model.repository.EntryRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 public class DomainMergerTest {
 
     @Autowired
-    private DomainMerger merger;
+    private ObjectMerger merger;
 
     @Autowired
     private EntryRepository entryRepository;

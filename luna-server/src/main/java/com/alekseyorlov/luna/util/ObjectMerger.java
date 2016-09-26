@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.service;
+package com.alekseyorlov.luna.util;
 
 import java.util.Collection;
 import org.springframework.beans.BeanWrapper;
@@ -9,7 +9,7 @@ import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DomainMerger {
+public class ObjectMerger {
 
     public enum MergeStartegy {
         UPDATE,

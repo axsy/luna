@@ -1,14 +1,15 @@
-package com.alekseyorlov.luna.service;
+package com.alekseyorlov.luna.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flipkart.zjsonpatch.JsonPatch;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-@Service
+@Component
 public class JsonPatcher {
 
     @Autowired
