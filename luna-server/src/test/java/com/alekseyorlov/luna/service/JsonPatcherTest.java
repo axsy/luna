@@ -1,6 +1,8 @@
 package com.alekseyorlov.luna.service;
 
 import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.dto.Patch;
+import com.alekseyorlov.luna.dto.patch.Operation;
 import com.alekseyorlov.luna.util.JsonPatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,8 +12,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -28,10 +33,17 @@ public class JsonPatcherTest {
         TestDTO testDTO = new TestDTO();
         testDTO.setA("a");
 
+        Patch patch = new Patch();
+        Operation operation = new Operation();
+        operation.setType(Operation.Type.REPLACE);
+        operation.setPath("/a");
+        operation.setValue("b");
+        patch.setOperations(Arrays.asList(operation));
+
         // when
         TestDTO patchedTestDTO = patcher.patch(
-                "[ {\"op\": \"replace\", \"path\": \"/a\", \"value\": \"b\"} ]",
                 testDTO,
+                patch,
                 TestDTO.class);
 
         // then
