@@ -12,7 +12,15 @@ import org.springframework.stereotype.Component;
 public class ObjectMerger {
 
     public enum MergeStartegy {
+
+        /**
+         * Applies nulls
+         */
         UPDATE,
+
+        /**
+         * Skips nulls
+         */
         PATCH
     }
 
@@ -29,8 +37,8 @@ public class ObjectMerger {
             @Override
             public void doWithPersistentProperty(PersistentProperty<?> property) {
                 Object sourceVal = sourceWrapper.getPropertyValue(property.getName());
-                if (!property.isIdProperty()&& ((mergeStartegy == MergeStartegy.UPDATE && sourceVal != null)
-                        || mergeStartegy == MergeStartegy.PATCH)) {
+                if (!property.isIdProperty() && ((mergeStartegy == MergeStartegy.PATCH && sourceVal != null)
+                        || mergeStartegy == MergeStartegy.UPDATE)) {
                     targetWrapper.setPropertyValue(property.getName(), sourceVal);
                 }
             }
@@ -43,8 +51,8 @@ public class ObjectMerger {
                 PersistentProperty<?> property = association.getInverse();
                 Object sourceVal = sourceWrapper.getPropertyValue(property.getName());
 
-                if (((mergeStartegy == MergeStartegy.UPDATE && sourceVal != null)
-                    || mergeStartegy == MergeStartegy.PATCH)) {
+                if (((mergeStartegy == MergeStartegy.PATCH && sourceVal != null)
+                    || mergeStartegy == MergeStartegy.UPDATE)) {
                     if (property.getType().equals(Collection.class)) {
                         Collection targetCollection = (Collection) targetWrapper.getPropertyValue(property.getName());
                         targetCollection.clear();
