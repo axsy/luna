@@ -1,9 +1,9 @@
 package com.alekseyorlov.luna.orika.mapper;
 
-import com.alekseyorlov.luna.model.Element;
-import com.alekseyorlov.luna.model.Entry;
-import com.alekseyorlov.luna.model.repository.ElementRepository;
-import com.alekseyorlov.luna.model.repository.ElementTypeRepository;
+import com.alekseyorlov.luna.domain.Element;
+import com.alekseyorlov.luna.domain.Entry;
+import com.alekseyorlov.luna.domain.repository.ElementRepository;
+import com.alekseyorlov.luna.domain.repository.ElementTypeRepository;
 import com.google.common.collect.Sets;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MappingContext;

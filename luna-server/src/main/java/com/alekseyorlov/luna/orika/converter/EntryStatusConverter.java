@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.orika.converter;
 
-import com.alekseyorlov.luna.model.Entry;
+import com.alekseyorlov.luna.domain.Entry;
 import com.google.common.base.CaseFormat;
 import ma.glasnost.orika.converter.BidirectionalConverter;
 import ma.glasnost.orika.metadata.Type;

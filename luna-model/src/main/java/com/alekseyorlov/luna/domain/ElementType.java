@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -44,5 +44,24 @@ public class ElementType {
 
     public void setAllowedData(Map<String, Class> allowedData) {
         this.allowedData = allowedData;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ElementType that = (ElementType) o;
+
+        if (!getTitle().equals(that.getTitle())) return false;
+        return getAllowedData().equals(that.getAllowedData());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle().hashCode();
+        result = 31 * result + getAllowedData().hashCode();
+        return result;
     }
 }

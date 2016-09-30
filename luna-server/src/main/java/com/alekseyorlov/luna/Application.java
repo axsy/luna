@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 @Configuration
-@ComponentScan
+@ComponentScan("com.alekseyorlov.luna")
 @EnableAutoConfiguration
 @PropertySource(value = {"classpath:/orm-configuration.properties"})
 @EntityScan(

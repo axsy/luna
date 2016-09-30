@@ -1,9 +1,11 @@
 package com.alekseyorlov.luna.service;
 
-import com.alekseyorlov.luna.model.Entry;
-import com.alekseyorlov.luna.model.repository.EntryRepository;
-import com.alekseyorlov.luna.util.ObjectMerger;
-import com.alekseyorlov.luna.util.ObjectMerger.MergeStartegy;
+import com.alekseyorlov.luna.domain.Entry;
+import com.alekseyorlov.luna.domain.repository.EntryRepository;
+import com.alekseyorlov.luna.dto.Patch;
+import com.alekseyorlov.luna.util.DomainObjectMerger;
+import com.alekseyorlov.luna.util.DomainObjectMerger.MergeStartegy;
+import com.alekseyorlov.luna.util.ObjectPatcher;
 import ma.glasnost.orika.MapperFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +15,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,10 @@ public class Entries {
     private MapperFacade mapper;
 
     @Autowired
-    private ObjectMerger merger;
+    private DomainObjectMerger merger;
+
+    @Autowired
+    private ObjectPatcher patcher;
 
     @Autowired
     private EntryRepository repository;
@@ -61,28 +67,23 @@ public class Entries {
         return mapper.map(savedEntry, com.alekseyorlov.luna.dto.Entry.class);
     }
 
-    /**
-     * Skips nulls
-     * @param entryId
-     * @param entryDto
-     */
     @Transactional
-    public void patch(Long entryId, com.alekseyorlov.luna.dto.Entry entryDto) {
-        Entry entryToSave = repository.findOne(entryId);
-        merger.merge(entryToSave, mapper.map(entryDto, Entry.class), MergeStartegy.PATCH);
-        repository.save(entryToSave);
-    }
+    public void patch(Long entryId, Patch patch) {
+        Entry entry = repository.findOne(entryId);
+        com.alekseyorlov.luna.dto.Entry entryDto = mapper.map(entry, com.alekseyorlov.luna.dto.Entry.class);
 
-    /**
-     * Applies nulls
-     * @param entryId
-     * @param entryDto
-     */
-    @Transactional
-    public void update(Long entryId, com.alekseyorlov.luna.dto.Entry entryDto) {
-        Entry entryToSave = repository.findOne(entryId);
-        merger.merge(entryToSave, mapper.map(entryDto, Entry.class), MergeStartegy.UPDATE);
-        repository.save(entryToSave);
+        try {
+            entryDto = patcher.patch(
+                    entryDto,
+                    patch,
+                    com.alekseyorlov.luna.dto.Entry.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // TODO: Is there any sense in different merging strategies in the view of RFC6902? To be researched.
+        merger.merge(entry, mapper.map(entryDto, Entry.class), MergeStartegy.PATCH);
+        repository.save(entry);
     }
 
     @Transactional

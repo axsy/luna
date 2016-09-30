@@ -1,7 +1,9 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "`entries`")
+@EntityListeners(AuditingEntityListener.class)
 public class Entry {
 
     public enum Status {
@@ -26,6 +29,7 @@ public class Entry {
     private Long id;
 
     @ManyToOne(optional = false)
+    @CreatedBy
     private User owner;
 
     @NotNull
@@ -34,6 +38,7 @@ public class Entry {
     @NotNull
     private String title;
 
+    // TODO: Make it set automatically?
     @NotNull
     private String slug;
 
@@ -52,7 +57,6 @@ public class Entry {
     )
     private List<Taxonomy> taxonomies;
 
-    @NotNull
     @CreatedDate
     private Instant createdAt;
 
@@ -117,6 +121,9 @@ public class Entry {
     }
 
     public void setElements(List<Element> elements) {
+        for(Element element: elements) {
+            element.setEntry(this);
+        }
         this.elements = elements;
     }
 
@@ -160,24 +167,4 @@ public class Entry {
         this.unpublishedAt = unpublishedAt;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Entry entry = (Entry) o;
-
-        if (!owner.equals(entry.owner)) return false;
-        if (!title.equals(entry.title)) return false;
-        return createdAt.equals(entry.createdAt);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = owner.hashCode();
-        result = 31 * result + title.hashCode();
-        result = 31 * result + createdAt.hashCode();
-        return result;
-    }
 }

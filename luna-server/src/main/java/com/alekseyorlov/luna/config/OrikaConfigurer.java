@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.config;
 
-import com.alekseyorlov.luna.model.Entry;
+import com.alekseyorlov.luna.domain.Entry;
 import com.alekseyorlov.luna.orika.configurer.NullMapperConfigurer;
 import com.alekseyorlov.luna.orika.converter.EntryTypeConverter;
 import com.alekseyorlov.luna.orika.converter.EntryStatusConverter;

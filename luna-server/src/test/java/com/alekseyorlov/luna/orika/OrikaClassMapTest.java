@@ -1,7 +1,7 @@
 package com.alekseyorlov.luna.orika;
 
 import com.alekseyorlov.luna.Application;
-import com.alekseyorlov.luna.model.*;
+import com.alekseyorlov.luna.domain.*;
 import ma.glasnost.orika.MapperFacade;
 import org.junit.Test;
 import org.junit.runner.RunWith;

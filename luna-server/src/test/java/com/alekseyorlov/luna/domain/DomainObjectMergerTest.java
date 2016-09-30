@@ -1,9 +1,9 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
 import com.alekseyorlov.luna.Application;
-import com.alekseyorlov.luna.util.ObjectMerger;
-import com.alekseyorlov.luna.util.ObjectMerger.MergeStartegy;
-import com.alekseyorlov.luna.model.repository.EntryRepository;
+import com.alekseyorlov.luna.domain.repository.EntryRepository;
+import com.alekseyorlov.luna.util.DomainObjectMerger;
+import com.alekseyorlov.luna.util.DomainObjectMerger.MergeStartegy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,10 +20,10 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles({"test", "integration"})
-public class DomainMergerTest {
+public class DomainObjectMergerTest {
 
     @Autowired
-    private ObjectMerger merger;
+    private DomainObjectMerger merger;
 
     @Autowired
     private EntryRepository entryRepository;
@@ -124,7 +125,6 @@ public class DomainMergerTest {
 
         // then
         assertEquals(taxonomies, targetEntry.getTaxonomies());
-        assertNull(targetEntry.getElements());
     }
 
     @Test
@@ -138,12 +138,13 @@ public class DomainMergerTest {
         final User user = new User();
         user.setUsername("new user");
         sourceEntry.setOwner(user);
+        sourceEntry.setTaxonomies(new ArrayList<>());
 
         // when
         merger.<Entry>merge(targetEntry, sourceEntry, MergeStartegy.UPDATE);
 
         // then
         assertEquals(user, targetEntry.getOwner());
-        assertNull(targetEntry.getElements());
+        assertEquals(0, targetEntry.getTaxonomies().size());
     }
 }

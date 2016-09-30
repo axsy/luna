@@ -1,7 +1,6 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 import static javax.persistence.FetchType.EAGER;
@@ -59,4 +58,22 @@ public class Element {
         this.entry = entry;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Element element = (Element) o;
+
+        if (!getType().equals(element.getType())) return false;
+        return getData() != null ? getData().equals(element.getData()) : element.getData() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getType().hashCode();
+        result = 31 * result + (getData() != null ? getData().hashCode() : 0);
+        return result;
+    }
 }

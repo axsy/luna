@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mapping.*;
 import org.springframework.data.repository.support.Repositories;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
+/**
+ * Does not remove @ManyToOne and @OneToOne associations
+ */
 @Component
-public class ObjectMerger {
+public class DomainObjectMerger {
 
     public enum MergeStartegy {
 
@@ -37,8 +41,10 @@ public class ObjectMerger {
             @Override
             public void doWithPersistentProperty(PersistentProperty<?> property) {
                 Object sourceVal = sourceWrapper.getPropertyValue(property.getName());
-                if (!property.isIdProperty() && ((mergeStartegy == MergeStartegy.PATCH && sourceVal != null)
-                        || mergeStartegy == MergeStartegy.UPDATE)) {
+                Object targetVal = targetWrapper.getPropertyValue(property.getName());
+                if (!property.isIdProperty() && !ObjectUtils.nullSafeEquals(sourceVal,targetVal)
+                    && ((mergeStartegy == MergeStartegy.PATCH && sourceVal != null)
+                    || mergeStartegy == MergeStartegy.UPDATE)) {
                     targetWrapper.setPropertyValue(property.getName(), sourceVal);
                 }
             }
@@ -50,20 +56,33 @@ public class ObjectMerger {
             public void doWithAssociation(Association<? extends PersistentProperty<?>> association) {
                 PersistentProperty<?> property = association.getInverse();
                 Object sourceVal = sourceWrapper.getPropertyValue(property.getName());
+                Object targetVal = targetWrapper.getPropertyValue(property.getName());
 
-                if (((mergeStartegy == MergeStartegy.PATCH && sourceVal != null)
-                    || mergeStartegy == MergeStartegy.UPDATE)) {
-                    if (property.getType().equals(Collection.class)) {
-                        Collection targetCollection = (Collection) targetWrapper.getPropertyValue(property.getName());
-                        targetCollection.clear();
-                        targetCollection.addAll((Collection) sourceWrapper.getPropertyValue(property.getName()));
+                if (sourceVal != null) {
+                    if (sourceVal instanceof Collection && targetVal instanceof Collection) {
+                        Collection persistentCollection = (Collection) targetVal;
+                        persistentCollection.clear();
+                        persistentCollection.addAll((Collection)sourceVal);
                     } else {
-                        targetWrapper.setPropertyValue(property.getName(), sourceVal);
+                        if (isNotEmpty(sourceVal) && !ObjectUtils.nullSafeEquals(sourceVal,targetVal)) {
+                            targetWrapper.setPropertyValue(property.getName(), sourceVal);
+                        }
                     }
                 }
             }
         });
 
         return target;
+    }
+
+    private static boolean isNotEmpty(Object obj) {
+        boolean result = true;
+        if (obj instanceof Iterable<?>) {
+            result = ((Iterable<?>)obj).iterator().hasNext();
+        } else if (ObjectUtils.isArray(obj)) {
+            result = (ObjectUtils.isEmpty((Object[]) obj));
+        }
+
+        return result;
     }
 }

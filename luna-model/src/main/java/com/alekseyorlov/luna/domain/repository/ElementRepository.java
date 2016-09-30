@@ -1,6 +1,6 @@
-package com.alekseyorlov.luna.model.repository;
+package com.alekseyorlov.luna.domain.repository;
 
-import com.alekseyorlov.luna.model.Element;
+import com.alekseyorlov.luna.domain.Element;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Collection;

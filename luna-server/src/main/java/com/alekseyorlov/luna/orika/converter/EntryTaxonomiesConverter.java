@@ -1,9 +1,9 @@
 package com.alekseyorlov.luna.orika.converter;
 
-import com.alekseyorlov.luna.model.Taxonomy;
-import com.alekseyorlov.luna.model.TaxonomyType;
-import com.alekseyorlov.luna.model.repository.TaxonomyRepository;
-import com.alekseyorlov.luna.model.repository.TaxonomyTypeRepository;
+import com.alekseyorlov.luna.domain.Taxonomy;
+import com.alekseyorlov.luna.domain.TaxonomyType;
+import com.alekseyorlov.luna.domain.repository.TaxonomyRepository;
+import com.alekseyorlov.luna.domain.repository.TaxonomyTypeRepository;
 import com.google.common.collect.Sets;
 import ma.glasnost.orika.converter.BidirectionalConverter;
 import ma.glasnost.orika.metadata.Type;

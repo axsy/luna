@@ -1,7 +1,6 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;

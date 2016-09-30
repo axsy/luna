@@ -3,7 +3,7 @@ package com.alekseyorlov.luna.service;
 import com.alekseyorlov.luna.Application;
 import com.alekseyorlov.luna.dto.Patch;
 import com.alekseyorlov.luna.dto.patch.Operation;
-import com.alekseyorlov.luna.util.JsonPatcher;
+import com.alekseyorlov.luna.util.ObjectPatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class JsonPatcherTest {
 
     @Autowired
-    private JsonPatcher patcher;
+    private ObjectPatcher patcher;
 
     @Test
     public void shouldAddPropertyValue() throws IOException {

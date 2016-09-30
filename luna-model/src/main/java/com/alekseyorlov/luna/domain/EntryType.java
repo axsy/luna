@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.model;
+package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -45,5 +45,24 @@ public class EntryType {
 
     public void setElementTypes(List<ElementType> elementTypes) {
         this.elementTypes = elementTypes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        EntryType entryType = (EntryType) o;
+
+        if (!getTitle().equals(entryType.getTitle())) return false;
+        return getElementTypes().equals(entryType.getElementTypes());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle().hashCode();
+        result = 31 * result + getElementTypes().hashCode();
+        return result;
     }
 }

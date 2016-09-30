@@ -1,4 +1,4 @@
-package com.alekseyorlov.luna.model.naming;
+package com.alekseyorlov.luna.domain.naming;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;

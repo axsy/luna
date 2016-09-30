@@ -1,7 +1,7 @@
 package com.alekseyorlov.luna.orika.converter;
 
-import com.alekseyorlov.luna.model.EntryType;
-import com.alekseyorlov.luna.model.repository.EntryTypeRepository;
+import com.alekseyorlov.luna.domain.EntryType;
+import com.alekseyorlov.luna.domain.repository.EntryTypeRepository;
 import ma.glasnost.orika.converter.BidirectionalConverter;
 import ma.glasnost.orika.metadata.Type;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.alekseyorlov.luna.model.repository;
+package com.alekseyorlov.luna.domain.repository;
 
-import com.alekseyorlov.luna.model.User;
+import com.alekseyorlov.luna.domain.User;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
