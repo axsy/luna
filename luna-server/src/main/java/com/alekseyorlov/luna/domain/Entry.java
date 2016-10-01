@@ -1,20 +1,25 @@
 package com.alekseyorlov.luna.domain;
 
+import com.alekseyorlov.luna.domain.listener.PublicationListener;
+import com.alekseyorlov.luna.domain.listener.SlugListener;
+import com.alekseyorlov.luna.domain.listener.annotation.Slug;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-
 import javax.validation.constraints.NotNull;
-
 import java.time.Instant;
 import java.util.List;
 
 @Entity
 @Table(name = "`entries`")
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners({
+        AuditingEntityListener.class,
+        SlugListener.class,
+        PublicationListener.class
+})
 public class Entry {
 
     public enum Status {
@@ -38,8 +43,8 @@ public class Entry {
     @NotNull
     private String title;
 
-    // TODO: Make it set automatically?
     @NotNull
+    @Slug(source = "title")
     private String slug;
 
     @ManyToOne(optional = false)
@@ -63,7 +68,6 @@ public class Entry {
     @LastModifiedDate
     private Instant updatedAt;
 
-    // TODO: Make it set automatically?
     private Instant publishedAt;
 
     private Instant unpublishedAt;

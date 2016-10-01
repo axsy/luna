@@ -10,7 +10,6 @@
 
     <modules>
         <module>luna-server</module>
-        <module>luna-model</module>
         <module>luna-dto</module>
     </modules>
 
@@ -26,6 +25,7 @@
         <orika.version>1.4.6</orika.version>
         <zjsonpatch.version>0.3.0</zjsonpatch.version>
         <guava.version>19.0</guava.version>
+        <slugify.version>2.1.6</slugify.version>
     </properties>
 
     <parent>
@@ -65,6 +65,11 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.slugify</groupId>
+                <artifactId>slugify</artifactId>
+                <version>${slugify.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

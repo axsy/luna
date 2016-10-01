@@ -166,7 +166,6 @@ public class EntriesTest {
         Entry entry = new Entry();
         entry.setStatus("published");
         entry.setTitle("some title");
-        entry.setSlug("some-title");
         entry.setType("raw");
 
         Map<String, List<String>> taxonomies = new HashMap<>();
