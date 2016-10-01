@@ -2,11 +2,12 @@ package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "`entry_types`")
-public class EntryType {
+public class EntryType implements Serializable {
 
     @Id
     private String id;

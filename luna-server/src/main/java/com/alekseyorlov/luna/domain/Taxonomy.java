@@ -2,13 +2,14 @@ package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "`taxonomies`", indexes = {
         @Index(columnList = "name", name = "idx_taxonomies_name")
 })
-public class Taxonomy {
+public class Taxonomy implements Serializable {
 
     @Id
     @GeneratedValue

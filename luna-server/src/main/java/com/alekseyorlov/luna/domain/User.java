@@ -5,10 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "`users`")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue

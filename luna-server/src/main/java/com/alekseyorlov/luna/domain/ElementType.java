@@ -2,13 +2,14 @@ package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Map;
 
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Table(name = "`element_types`")
-public class ElementType {
+public class ElementType implements Serializable {
 
     @Id
     private String id;

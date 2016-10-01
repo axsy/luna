@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
         SlugListener.class,
         PublicationListener.class
 })
-public class Entry {
+public class Entry implements Serializable {
 
     public enum Status {
         PUBLISHED,
@@ -28,6 +29,9 @@ public class Entry {
         DRAFT,
         TIMED_PUBLISH
     }
+
+    @Transient
+    private Entry savedState;
 
     @Id
     @GeneratedValue
@@ -71,6 +75,14 @@ public class Entry {
     private Instant publishedAt;
 
     private Instant unpublishedAt;
+
+    public Entry getSavedState() {
+        return savedState;
+    }
+
+    public void setSavedState(Entry savedState) {
+        this.savedState = savedState;
+    }
 
     public Long getId() {
         return id;

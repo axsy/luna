@@ -1,13 +1,14 @@
 package com.alekseyorlov.luna.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Map;
 
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Table(name = "`elements`")
-public class Element {
+public class Element implements Serializable {
 
     @Id
     @GeneratedValue
