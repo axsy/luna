@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.domain.listener;
 
-import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.config.TestConfig;
 import com.alekseyorlov.luna.domain.Element;
 import com.alekseyorlov.luna.domain.Entry;
 import com.alekseyorlov.luna.domain.Entry.Status;
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles({"test", "integration"})
 @Transactional
 public class PublicationListenerTest {

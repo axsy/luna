@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class ObjectPatcher {
 
-    @Autowired
+    @Autowired(required = false)
     private ObjectMapper mapper;
 
     public <T> T patch(T source, Patch patch, Class<T> destinationClass) throws IOException {
@@ -21,4 +21,5 @@ public class ObjectPatcher {
 
         return mapper.treeToValue(JsonPatch.apply(diffNode, objectNode), destinationClass);
     }
+
 }

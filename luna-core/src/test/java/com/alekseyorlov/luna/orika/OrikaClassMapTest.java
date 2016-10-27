@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.orika;
 
-import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.config.TestConfig;
 import com.alekseyorlov.luna.domain.*;
 import ma.glasnost.orika.MapperFacade;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles("test")
 public class OrikaClassMapTest {
 

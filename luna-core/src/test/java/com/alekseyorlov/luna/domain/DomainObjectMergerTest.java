@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.domain;
 
-import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.config.TestConfig;
 import com.alekseyorlov.luna.domain.repository.EntryRepository;
 import com.alekseyorlov.luna.util.DomainObjectMerger;
 import com.alekseyorlov.luna.util.DomainObjectMerger.MergeStartegy;
@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles({"test", "integration"})
 public class DomainObjectMergerTest {
 

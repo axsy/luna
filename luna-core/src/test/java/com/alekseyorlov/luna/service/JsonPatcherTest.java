@@ -1,6 +1,6 @@
 package com.alekseyorlov.luna.service;
 
-import com.alekseyorlov.luna.Application;
+import com.alekseyorlov.luna.config.TestConfig;
 import com.alekseyorlov.luna.dto.Patch;
 import com.alekseyorlov.luna.dto.patch.Operation;
 import com.alekseyorlov.luna.util.ObjectPatcher;
@@ -15,11 +15,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles("test")
 public class JsonPatcherTest {
 

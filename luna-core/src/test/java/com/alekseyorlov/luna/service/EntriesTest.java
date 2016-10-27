@@ -1,8 +1,8 @@
 package com.alekseyorlov.luna.service;
 
-import com.alekseyorlov.luna.Application;
-import com.alekseyorlov.luna.domain.Entry_;
+import com.alekseyorlov.luna.config.TestConfig;
 import com.alekseyorlov.luna.domain.Entry.Status;
+import com.alekseyorlov.luna.domain.Entry_;
 import com.alekseyorlov.luna.domain.repository.EntryRepository;
 import com.alekseyorlov.luna.dto.Entry;
 import com.alekseyorlov.luna.dto.Patch;
@@ -31,7 +31,7 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = {TestConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles({"test", "integration"})
 @Transactional
 public class EntriesTest {

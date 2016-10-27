@@ -9,8 +9,8 @@
     <url>https://github.com/axsy/luna</url>
 
     <modules>
-        <module>luna-server</module>
         <module>luna-dto</module>
+        <module>luna-core</module>
     </modules>
 
     <packaging>pom</packaging>
