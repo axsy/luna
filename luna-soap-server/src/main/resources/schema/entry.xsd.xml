@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entry xmlns="http://alekseyorlov.com/entry.xsd">
+    <id>1</id>
+    <status>published</status>
+    <title>At vero eos et accusamus</title>
+    <slug>at-vero-eos-et-accusamus</slug>
+    <type>raw</type>
+    <createdAt>2016-10-28T14:47:00</createdAt>
+    <updatedAt>2016-10-28T14:47:00</updatedAt>
+    <publishedAt>2016-10-28T14:47:00</publishedAt>
+    <unpublishedAt>2016-10-28T14:47:00</unpublishedAt>
+    <taxonomies>
+        <taxonomy type="tag">
+            <item>Lorem ipsum</item>
+            <item>Nam libero</item>
+        </taxonomy>
+    </taxonomies>
+    <elements>
+        <element type="markdown">
+            <param name="markup">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            </param>
+        </element>
+    </elements>
+</entry>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://alekseyorlov.com/entry.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsde="http://alekseyorlov.com/entry.xsd"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:complexType name="entryType">
+        <xs:all>
+            <xs:element name="id" type="xs:integer"/>
+            <xs:element name="status" type="xs:token"/>
+            <xs:element name="title" type="xs:token"/>
+            <xs:element name="slug" type="xs:token"/>
+            <xs:element name="type" type="xs:token"/>
+            <xs:element name="taxonomies">
+                <xs:complexType>
+                    <xs:sequence maxOccurs="unbounded">
+                        <xs:element name="taxonomy">
+                            <xs:complexType>
+                                <xs:sequence maxOccurs="unbounded">
+                                    <xs:element name="item" type="xs:string"/>
+                                </xs:sequence>
+                                <xs:attribute name="type" type="xs:token" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="elements">
+                <xs:complexType>
+                    <xs:sequence maxOccurs="unbounded">
+                        <xs:element name="element">
+                            <xs:complexType>
+                                <xs:sequence maxOccurs="unbounded">
+                                    <xs:element name="param">
+                                        <xs:complexType>
+                                            <xs:simpleContent>
+                                                <xs:restriction base="xs:token">
+                                                    <xs:attribute name="name" type="xs:token"
+                                                                  use="required"/>
+                                                </xs:restriction>
+                                            </xs:simpleContent>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="type" type="xs:token" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createdAt" type="xs:dateTime"/>
+            <xs:element name="updatedAt" type="xs:dateTime"/>
+            <xs:element name="publishedAt" type="xs:dateTime"/>
+            <xs:element name="unpublishedAt" type="xs:dateTime"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:element name="entry" type="xsde:entryType"/>
+</xs:schema>

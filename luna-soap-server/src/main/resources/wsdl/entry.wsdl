@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name="Entry" targetNamespace="http://alekseyorlov.com/entry.wsdl"
+                  xmlns:tns="http://alekseyorlov.com/entry.wsdl"
+                  xmlns:xsde="http://alekseyorlov.com/entry.xsd"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+    <!-- Does not work for me in IntelliJ, to be researched why -->
+    <!--<wsdl:import namespace="http://alekseyorlov.com/entry.xsd" location="http://alekseyorlov.com/entry.xsd"/>-->
+    <wsdl:types>
+        <xs:schema targetNamespace="http://alekseyorlov.com/entry.xsd"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   attributeFormDefault="unqualified" elementFormDefault="qualified">
+            <xs:complexType name="entryType">
+                <xs:all>
+                    <xs:element name="id" type="xs:integer"/>
+                    <xs:element name="status" type="xs:token"/>
+                    <xs:element name="title" type="xs:token"/>
+                    <xs:element name="slug" type="xs:token"/>
+                    <xs:element name="type" type="xs:token"/>
+                    <xs:element name="taxonomies">
+                        <xs:complexType>
+                            <xs:sequence maxOccurs="unbounded">
+                                <xs:element name="taxonomy">
+                                    <xs:complexType>
+                                        <xs:sequence maxOccurs="unbounded">
+                                            <xs:element name="item" type="xs:string"/>
+                                        </xs:sequence>
+                                        <xs:attribute name="type" type="xs:token" use="required"/>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="elements">
+                        <xs:complexType>
+                            <xs:sequence maxOccurs="unbounded">
+                                <xs:element name="element">
+                                    <xs:complexType>
+                                        <xs:sequence maxOccurs="unbounded">
+                                            <xs:element name="param">
+                                                <xs:complexType>
+                                                    <xs:simpleContent>
+                                                        <xs:extension base="xs:token">
+                                                            <xs:attribute name="name" type="xs:token"
+                                                                          use="required"/>
+                                                        </xs:extension>
+                                                    </xs:simpleContent>
+                                                </xs:complexType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                        <xs:attribute name="type" type="xs:token" use="required"/>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="createdAt" type="xs:dateTime"/>
+                    <xs:element name="updatedAt" type="xs:dateTime"/>
+                    <xs:element name="publishedAt" type="xs:dateTime"/>
+                    <xs:element name="unpublishedAt" type="xs:dateTime"/>
+                </xs:all>
+            </xs:complexType>
+            <xs:element name="entry" type="xsde:entryType"/>
+            <xs:element name="id" type="xs:integer"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="FindEntryByIdInput">
+        <wsdl:part name="body" element="xsde:id"/>
+    </wsdl:message>
+    <wsdl:message name="FindEntryByIdOutput">
+        <wsdl:part name="body" element="xsde:entry"/>
+    </wsdl:message>
+    <wsdl:portType name="EntryPortType">
+        <wsdl:operation name="FindEntryById">
+            <wsdl:input message="tns:FindEntryByIdInput"/>
+            <wsdl:output message="tns:FindEntryByIdOutput"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EntrySoapBinding" type="tns:EntryPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="FindEntryById">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EntriesService">
+        <wsdl:port name="EntryPort" binding="tns:EntrySoapBinding">
+            <soap:address location="http://localhost:8080/entries"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
