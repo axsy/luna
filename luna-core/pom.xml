@@ -10,7 +10,7 @@
     <artifactId>luna-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>luna-score</name>
+    <name>luna-core</name>
     <url>https://github.com/axsy/luna</url>
 
     <properties>
